@@ -1,7 +1,7 @@
 <h1>Data Science Portfolio by Yoonbo Cho</h1>
 This portfolio provides a collection of data analysis or exploration of machine learning algorithms using Jupyter notebook.
 <h5>Contact</h5>
-email: yoonbo1@gmail.com
+email: yoonbocho1@gmail.com
 <h3>Personal Projects</h3>
 <h4>Askreddit Generator Bot</h4>
 For this project I created a Bot that generates Askreddit questions, classifies the quality of the question, then with a Bot I posted the question to reddit. Here is the Kernel for this experiment as well as the github for the codes for the ETL, webscraping and the Bot.
