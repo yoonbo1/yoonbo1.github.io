@@ -6,7 +6,7 @@ email: yoonbocho1@gmail.com
 <h4>Askreddit Generator Bot</h4>
 For this project I created a Bot that generates Askreddit questions, classifies the quality of the question, then with a Bot I posted the question to reddit. Here is the Kernel for this experiment as well as the github for the codes for the ETL, webscraping and the Bot.
 <br>
-<a href="https://github.com/ProHanzo/AskReddit/blob/master/Kernel/AskReddit_Create.ipynb">Kernel</a>
+<a href="https://github.com/ProHanzo/AskReddit/blob/master/Kernel/AskReddit_Create.ipynb">Research</a>
 <br>
 <a href="https://github.com/ProHanzo/AskReddit/tree/master/Code">Code</a>
 <br>
