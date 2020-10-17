@@ -4,12 +4,14 @@ This portfolio provides a collection of data analysis or exploration of machine 
 <h4>Askreddit Generator Bot</h4>
 For this project I created a Bot that generates Askreddit questions, classifies the quality of the question, then with a Bot I posted the question to reddit. Here is the Kernel for this experiment as well as the github for the codes for the ETL, webscraping and the Bot.
 <br>
-<h4>Stock Mock-up Website - Website Data Visualization</h4>
-Using Apis I was able to collect up to date stock and news data and implement it onto the website.The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
-<a href="http://yoonbo.pythonanywhere.com/">Website</a>
 <a href="https://github.com/ProHanzo/AskReddit/blob/master/Kernel/AskReddit_Create.ipynb">Kernel</a>
 <br>
 <a href="https://github.com/ProHanzo/AskReddit/tree/master/Code">Code</a>
+<br>
+<h4>Stock Mock-up Website - Website Data Visualization</h4>
+Using Apis I was able to collect up to date stock and news data and implement it onto the website.The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
+<br>
+<a href="http://yoonbo.pythonanywhere.com/">Website</a>
 <h3>Kaggle Competitions</h3>
 <h4>Titanic: Machine Learning from Disaster</h4>
 This kaggle competition is the research of the infamous sinking of the Titanic. This competition helped me learn how to clean, analyze, and feature engineer in order to produce a optimal classification ML model.
