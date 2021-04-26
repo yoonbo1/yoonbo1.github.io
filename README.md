@@ -9,7 +9,7 @@ For this project I created a Bot that generates Askreddit questions, classifies 
 <a href="https://github.com/ProHanzo/AskReddit">github</a>
 <br>
 <h4>2. Stock Mock-up Website - Django - Data Visualization</h4>
-Using Apis I was able to collect up to date stock and news data and implement it onto the website.The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
+Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
 <br>
 <a href="http://yoonbo.pythonanywhere.com/">Website</a>
 <h3>Kaggle Competitions</h3>
