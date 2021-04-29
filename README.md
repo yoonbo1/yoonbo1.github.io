@@ -12,7 +12,7 @@ For this project I created a Bot that generates Askreddit questions, classifies 
 <br>
 <a href="https://github.com/ProHanzo/AskReddit">github</a>
 <br>
-<h4>3. Website Designs - UI/UX</h4>
+<h4>3. Website Designs - Adobe XD - UI/UX</h4>
 Here is my collection of UI/UX designs for websites. I keep my portfolio of designs uploaded to dribbble so feel free to check it out.
 <br>
 <a href="https://dribbble.com/yoonbo1">dribbble portfolio</a>
