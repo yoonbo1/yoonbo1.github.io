@@ -7,7 +7,7 @@ email: yoonbocho1@gmail.com
 Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
 <br>
 <a href="http://yoonbo.pythonanywhere.com/">Website</a>
-<h4>2. Askreddit Generator Bot - TensorFlow</h4>
+<h4>2. Askreddit Generator Bot - Machine Learning - TensorFlow</h4>
 For this project I created a Bot that generates Askreddit questions, classifies the quality of the question, then with a Bot I posted the question to reddit. Here is the Kernel for this experiment as well as the github for the codes for the ETL, webscraping and the Bot.
 <br>
 <a href="https://github.com/ProHanzo/AskReddit">github</a>
