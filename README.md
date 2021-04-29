@@ -2,7 +2,7 @@
 This portfolio provides a collection of data science, software development, and UI/UX projects. Please have a look and thank you for your time.
 <h5>Contact</h5>
 email: yoonbocho1@gmail.com
-<h3>Personal Projects</h3>
+<h2>Personal Projects</h2>
 <h4>1. Stock Mock-up Website - Django - Data Visualization</h4>
 Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
 <br>
@@ -17,12 +17,12 @@ Here is my collection of UI/UX designs for websites. I keep my portfolio of desi
 <br>
 <a href="https://dribbble.com/yoonbo1">dribbble portfolio</a>
 <br>
-<h3>Kaggle Competitions</h3>
+<h2>Kaggle Competitions</h2>
 <h4>Titanic: Machine Learning from Disaster</h4>
 This kaggle competition is the research of the infamous sinking of the Titanic. This competition helped me learn how to clean, analyze, and feature engineer in order to produce a optimal classification ML model.
 <br>
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Titanic_Notebook.ipynb">nbViewer</a>
-<h3>Education</h3>
+<h2>Education</h2>
 <h6>August 2019 - Current</h6>
 <h5>Rowan College at Burlington County - Computer Science</h5>
   <h6>GPA: 4.0</h6>
