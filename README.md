@@ -24,6 +24,6 @@ This kaggle competition is the research of the infamous sinking of the Titanic. 
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Titanic_Notebook.ipynb">nbViewer</a>
 <h3>Education</h3>
 <div>August 2019 - Current</div>
-<h3>Rowan College at Burlington County</h3>
-  <h4>GPA: 4.0</h4>
+<h5>Rowan College at Burlington County</h5>
+  <h6>GPA: 4.0</h6>
 
