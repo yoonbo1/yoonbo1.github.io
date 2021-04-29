@@ -1,5 +1,5 @@
 <h1>Portfolio by Yoonbo Cho</h1>
-This portfolio provides a collection of data science and software engineering projects. Please have a look and thank you for your time.
+This portfolio provides a collection of data science, software development, and UI/UX projects. Please have a look and thank you for your time.
 <h5>Contact</h5>
 email: yoonbocho1@gmail.com
 <h3>Personal Projects</h3>
