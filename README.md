@@ -24,7 +24,6 @@ This kaggle competition is the research of the infamous sinking of the Titanic. 
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Titanic_Notebook.ipynb">nbViewer</a>
 <h3>Personal Studies</h3>
 <h4>Machine Learning with Scikit-Learn and TensorFlow</h4>
-<br>
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Chapter_2_Regressor.ipynb">Chapter 2</a>
 <br>
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Chapter_3_Classification.ipynb">Chapter 3</a>
