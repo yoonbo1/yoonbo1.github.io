@@ -22,11 +22,8 @@ Here is my collection of UI/UX designs for websites. I keep my portfolio of desi
 This kaggle competition is the research of the infamous sinking of the Titanic. This competition helped me learn how to clean, analyze, and feature engineer in order to produce a optimal classification ML model.
 <br>
 <a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Titanic_Notebook.ipynb">nbViewer</a>
-<h3>Personal Studies</h3>
-<h4>Machine Learning with Scikit-Learn and TensorFlow</h4>
-<a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Chapter_2_Regressor.ipynb">Chapter 2</a>
-<br>
-<a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Chapter_3_Classification.ipynb">Chapter 3</a>
-<br>
-<a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Vocab.ipynb">Vocab</a>
+<h3>Education/h3>
+<div>August 2019 - Current</div>
+<h4>Rowan College at Burlington County/h4>
+  <h5>GPA: 4.0</h5>
 
