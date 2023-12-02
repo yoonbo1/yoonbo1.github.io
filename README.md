@@ -1,4 +1,4 @@
-<h1>Experience and Projects by Yoonbo Cho</h1>
+<h1>Experiences and Projects by Yoonbo Cho</h1>
 This portfolio provides a collection of software development, UI/UX projects, and data science. Please have a look and thank you for your time.
 <h5>Contact</h5>
 email: yoonbocho1@gmail.com
