@@ -5,11 +5,12 @@ email: yoonbocho1@gmail.com
 <h2>Experience</h2>
 <h4>1. Software Developer and Founder</h4>
 <a href="https://www.plusluv.co/">www.plusluv.co</a>
-• Created everything from the UI designs to frontend and backend systems.
-• The features on the app include: login/registration, websockets used for chatting, subscription system, can draw notes, share photos, and able to play couple games.
-• Organized all the logistics of shipping a mobile app through a business domain. 
-• Managed risk by doing market research on the success of shipping an app similar to +Luv: The Couple App. 
-• Responsible for all the social media accounts and planning blogs, social media posts, and various other marketing strategies.
+<br>
+• Created everything from the UI designs to frontend and backend systems. <br>
+• The features on the app include: login/registration, websockets used for chatting, subscription system, can draw notes, share photos, and able to play couple games. <br>
+• Organized all the logistics of shipping a mobile app through a business domain. <br>
+• Managed risk by doing market research on the success of shipping an app similar to +Luv: The Couple App. <br>
+• Responsible for all the social media accounts and planning blogs, social media posts, and various other marketing strategies. <br>
 <h4>2. Full Stack Developer</h4>
 <a href="https://www.fabspeed.com/">www.fabspeed.com</a>
 • Used heatmap data to improve user navigation on the website. 
