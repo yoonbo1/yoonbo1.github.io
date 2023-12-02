@@ -4,18 +4,16 @@ This portfolio provides a collection of software development, UI/UX projects, an
 email: yoonbocho1@gmail.com
 <h2>Experience</h2>
 <h4>1. Software Developer and Founder</h4>
-<br>
 <a href="https://www.plusluv.co/">www.plusluv.co</a>
-<br>
+<br> <br>
 • Created everything from the UI designs to frontend and backend systems. <br>
 • The features on the app include: login/registration, websockets used for chatting, subscription system, can draw notes, share photos, and able to play couple games. <br>
 • Organized all the logistics of shipping a mobile app through a business domain. <br>
 • Managed risk by doing market research on the success of shipping an app similar to +Luv: The Couple App. <br>
 • Responsible for all the social media accounts and planning blogs, social media posts, and various other marketing strategies. <br>
 <h4>2. Full Stack Developer</h4>
-<br>
 <a href="https://www.fabspeed.com/">www.fabspeed.com</a>
-<br>
+<br> <br>
 • Used heatmap data to improve user navigation on the website. 
 Improved conversions on average from .10-20% to .30-.40%. <br>
 • Created web scraping scripts using Python to extract Google and 
@@ -24,9 +22,8 @@ Yelp reviews. <br>
 (https://www.wholesale.fabspeed.com/) <br>
 • Created reusable tools with React.js to mass update products on the website. <br>
 <h4>3. Full Stack Developer</h4>
-<br>
 <a href="https://www.streamerrating.com/">www.streamerrating.com</a>
-<br>
+<br> <br>
 • Designed, developed, and deployed the website using Adobe XD, 
 React.js, and Django Rest Framework. <br>
 • Hosting the website and database management is managed using 
