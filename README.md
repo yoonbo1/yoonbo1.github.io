@@ -4,6 +4,7 @@ This portfolio provides a collection of software development, UI/UX projects, an
 email: yoonbocho1@gmail.com
 <h2>Experience</h2>
 <h4>1. Software Developer and Founder</h4>
+<br>
 <a href="https://www.plusluv.co/">www.plusluv.co</a>
 <br>
 • Created everything from the UI designs to frontend and backend systems. <br>
@@ -12,25 +13,29 @@ email: yoonbocho1@gmail.com
 • Managed risk by doing market research on the success of shipping an app similar to +Luv: The Couple App. <br>
 • Responsible for all the social media accounts and planning blogs, social media posts, and various other marketing strategies. <br>
 <h4>2. Full Stack Developer</h4>
+<br>
 <a href="https://www.fabspeed.com/">www.fabspeed.com</a>
+<br>
 • Used heatmap data to improve user navigation on the website. 
-Improved conversions on average from .10-20% to .30-.40%. 
+Improved conversions on average from .10-20% to .30-.40%. <br>
 • Created web scraping scripts using Python to extract Google and 
-Yelp reviews. 
+Yelp reviews. <br>
 • Refurbished and launched Fabspeed’s wholesale website. 
-(https://www.wholesale.fabspeed.com/) 
-• Created reusable tools with React.js to mass update products on the website.
+(https://www.wholesale.fabspeed.com/) <br>
+• Created reusable tools with React.js to mass update products on the website. <br>
 <h4>3. Full Stack Developer</h4>
+<br>
 <a href="https://www.streamerrating.com/">www.streamerrating.com</a>
+<br>
 • Designed, developed, and deployed the website using Adobe XD, 
-React.js, and Django Rest Framework. 
+React.js, and Django Rest Framework. <br>
 • Hosting the website and database management is managed using 
-AWS. 
+AWS. <br>
 • Used a third-party API for rendering profiles and fetching 
-(https://www.twitch.tv/) related data. 
+(https://www.twitch.tv/) related data. <br>
 • Used a Cloud Database to store StreamerRating users and reviews.
-<h2>Personal Projects</h2>
-<h4>1. Stock Mock-up Website - Django - Data Visualization</h4>
+<h2>Personal Projects</h2> 
+<h4>1. Stock Mock-up Website - Django - Data Visualization</h4> 
 Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
 <br>
 <a href="http://yoonbo.pythonanywhere.com/">Website</a>
