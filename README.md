@@ -35,7 +35,7 @@ AWS. <br>
 <h4>1. Stock Mock-up Website - Django - Data Visualization</h4> 
 Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
 <br>
-<a href="http://yoonbo.pythonanywhere.com/">Website</a>
+<a href="http://yoonbo.pythonanywhere.com/">www.yoonbo.pythonanywhere.com/</a>
 <br>
 <h4>2. Website Designs - Adobe XD - UI/UX</h4>
 Here is my collection of UI/UX designs for websites. I keep my portfolio of designs uploaded to dribbble so feel free to check it out.
