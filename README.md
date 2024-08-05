@@ -1,54 +1,84 @@
-<h1>Experiences and Projects by Yoonbo Cho</h1>
-This portfolio provides a collection of software development, UI/UX projects, and data science. Please have a look and thank you for your time.
-<h5>Contact</h5>
-email: yoonbocho1@gmail.com
-<h2>Experience</h2>
-<h4>1. Software Developer and Founder</h4>
-<a href="https://www.plusluv.co/">www.plusluv.co</a>
-<br> <br>
-• Created everything from the UI designs to frontend and backend systems. <br>
-• The features on the app include: login/registration, websockets used for chatting, subscription system, can draw notes, share photos, and able to play couple games. <br>
-• Organized all the logistics of shipping a mobile app through a business domain. <br>
-• Managed risk by doing market research on the success of shipping an app similar to +Luv: The Couple App. <br>
-• Responsible for all the social media accounts and planning blogs, social media posts, and various other marketing strategies. <br>
-<h4>2. Full Stack Developer</h4>
-<a href="https://www.fabspeed.com/">www.fabspeed.com</a>
-<br> <br>
-• Used heatmap data to improve user navigation on the website. 
-Improved conversions on average from .10-20% to .30-.40%. <br>
-• Created web scraping scripts using Python to extract Google and 
-Yelp reviews. <br>
-• Refurbished and launched Fabspeed’s wholesale website. 
-(https://www.wholesale.fabspeed.com/) <br>
-• Created reusable tools with React.js to mass update products on the website. <br>
-<h4>3. Full Stack Developer</h4>
-<a href="https://www.streamerrating.com/">www.streamerrating.com</a>
-<br> <br>
-• Designed, developed, and deployed the website using Adobe XD, 
-React.js, and Django Rest Framework. <br>
-• Hosting the website and database management is managed using 
-AWS. <br>
-• Used a third-party API for rendering profiles and fetching 
-(https://www.twitch.tv/) related data. <br>
-• Used a Cloud Database to store StreamerRating users and reviews.
-<h2>Personal Projects</h2> 
-<h4>1. Stock Mock-up Website - Django - Data Visualization</h4> 
-Using Apis I was able to collect real stock news and implement it onto the website. The website is fully responsive and implements responsive graphs and data visualization using the Chart.Js framework.
-<br>
-<a href="http://yoonbo.pythonanywhere.com/">www.yoonbo.pythonanywhere.com/</a>
-<br>
-<h4>2. Website Designs - Adobe XD - UI/UX</h4>
-Here is my collection of UI/UX designs for websites. I keep my portfolio of designs uploaded to dribbble so feel free to check it out.
-<br>
-<a href="https://dribbble.com/yoonbo1">dribbble portfolio</a>
-<br>
-<h2>Kaggle Competitions</h2>
-<h4>Titanic: Machine Learning from Disaster</h4>
-This kaggle competition is the research of the infamous sinking of the Titanic. This competition helped me learn how to clean, analyze, and feature engineer in order to produce a optimal classification ML model.
-<br>
-<a href="https://nbviewer.jupyter.org/github/yoonbo1/kernels/blob/main/Titanic_Notebook.ipynb">nbViewer</a>
-<h2>Education</h2>
-<h6>August 2019 - Current</h6>
-<h5>Rowan College at Burlington County - Computer Science</h5>
-  <h6>GPA: 4.0</h6>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-semibold text-gray-700">My Portfolio</div>
+                <nav class="flex space-x-4">
+                    <a href="#introduction" class="text-gray-600 hover:text-gray-800">Introduction</a>
+                    <a href="#projects" class="text-gray-600 hover:text-gray-800">Projects</a>
+                    <a href="#skills" class="text-gray-600 hover:text-gray-800">Skills</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-800">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Introduction Section -->
+        <section id="introduction" class="py-8">
+            <h2 class="text-3xl font-semibold mb-4">Introduction</h2>
+            <p class="text-gray-700">Hi, I'm [Your Name], a passionate developer...</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-8">
+            <h2 class="text-3xl font-semibold mb-4">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-2">Project 1</h3>
+                    <p class="text-gray-700">Description of Project 1...</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-2">Project 2</h3>
+                    <p class="text-gray-700">Description of Project 2...</p>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-8">
+            <h2 class="text-3xl font-semibold mb-4">Skills</h2>
+            <ul class="list-disc list-inside">
+                <li class="text-gray-700">Skill 1</li>
+                <li class="text-gray-700">Skill 2</li>
+                <li class="text-gray-700">Skill 3</li>
+                <!-- Add more skills as needed -->
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-8">
+            <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+            <form class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Name</label>
+                    <input type="text" id="name" class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input type="email" id="email" class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700">Message</label>
+                    <textarea id="message" class="w-full mt-1 p-2 border border-gray-300 rounded-lg"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
