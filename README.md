@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,7 +28,7 @@
         <!-- Introduction Section -->
         <section id="introduction" class="py-8">
             <h2 class="text-3xl font-semibold mb-4">Introduction</h2>
-            <p class="text-gray-700">Hi, I'm [Your Name], a passionate developer...</p>
+            <p class="text-gray-700">Hi, I'm Yoonbo Cho, a passionate software developer with experience in building web applications, developing software solutions, and working with various programming languages and technologies.</p>
         </section>
 
         <!-- Projects Section -->
