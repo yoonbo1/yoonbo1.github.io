@@ -6,9 +6,9 @@ Welcome to the contact and privacy page for Jibbr. Here, you’ll find informati
 
 ## Contact Us
 
-If you have any questions, feedback, or need assistance, feel free to reach out to us.
+If you have any questions, feedback, or need assistance, we’re here to help.
 
-- **Discord:** .nuggg.
+- **Email Support:** For any support-related inquiries, please contact us at [nugdev2024@gmail.com](mailto:nugdev2024@gmail.com).
 
 Our team is available to assist with any inquiries related to Jibbr and its services.
 
@@ -23,14 +23,16 @@ Jibbr ("we," "our," or "us") is committed to protecting your privacy. This Priva
 ### 1. Information We Collect
 
 We collect the following types of information:
-- **Personal Information:** Information you provide directly, such as your name, email address, and any other details you submit through our app or website.
-- **Usage Data:** Data collected automatically when you interact with Jibbr, including app activity and preferences.
+
+- **Response Data:** Your responses to prompts, which are analyzed to provide you with personalized feedback and insights. This data is securely stored and confidential.
+- **Usage Data:** Data collected automatically when you interact with Jibbr, including app activity and preferences, to help us improve the app.
 
 ### 2. How We Use Your Information
 
 We use the information we collect for the following purposes:
-- To provide, operate, and maintain the Jibbr app.
-- To improve and personalize your experience on our platform.
+
+- To provide, operate, and maintain the Jibbr app and its feedback features.
+- To enhance your experience with personalized insights and progress tracking.
 - To communicate with you regarding updates, support, or feedback.
 
 ### 3. Data Security
@@ -39,8 +41,9 @@ We take data security seriously and implement measures to protect your informati
 
 ### 4. Contact Information
 
-If you have any questions or concerns about this Privacy Policy, you can contact us via:
-- **Discord:** .nuggg.
+If you have any questions or concerns about this Privacy Policy or need support, please reach out to us:
+
+- **Email:** [nugdev2024@gmail.com](mailto:nugdev2024@gmail.com)
 
 ### 5. Updates to This Privacy Policy
 
@@ -48,4 +51,30 @@ We may update this Privacy Policy from time to time to reflect changes in our pr
 
 ---
 
-Thank you for using Jibbr!
+## Frequently Asked Questions (FAQ)
+
+Here are answers to some common questions to help you with the Jibbr app.
+
+### 1. How do I get started with Jibbr?
+
+Download the Jibbr app, set your profile preferences, and begin engaging with interactive prompts designed to build your soft skills.
+
+### 2. How does Jibbr provide feedback?
+
+Jibbr uses advanced AI to analyze your responses to prompts and provides detailed, constructive feedback to help you improve communication, teamwork, leadership, and other soft skills.
+
+### 3. Is my data secure with Jibbr?
+
+Absolutely. We prioritize your privacy and data security. All interactions are confidential and securely stored to protect your privacy.
+
+### 4. How often should I use Jibbr?
+
+You can use Jibbr as often as you like. The app is designed for flexibility, so you can engage with prompts at your own pace, whether daily, weekly, or whenever it fits your schedule.
+
+### 5. Can I suggest new features or improvements?
+
+We welcome feedback! Feel free to contact us at [nugdev2024@gmail.com](mailto:nugdev2024@gmail.com) with any suggestions or ideas for improving Jibbr.
+
+---
+
+Thank you for using Jibbr! We hope this FAQ section helps, and please reach out if you have further questions.
