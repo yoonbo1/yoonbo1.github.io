@@ -7,9 +7,15 @@ In today's competitive world, strong soft skills are essential for personal and 
 ---
 
 ### Screenshots
-![1](assets/screenshots/jibbr-1.png)
-![2](assets/screenshots/jibbr-2.png)
-![3](assets/screenshots/jibbr-3.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+  <img src="assets/screenshots/jibbr-1.png" alt="1" width="30%">
+  
+  <img src="assets/screenshots/jibbr-2.png" alt="1" width="30%">
+  
+  <img src="assets/screenshots/jibbr-3.png" alt="1" width="30%">
+
+</div>
 
 ### Promotional Text
 **"Enhance your communication, leadership, and teamwork skills with AI-powered insights from Jibbr."**
