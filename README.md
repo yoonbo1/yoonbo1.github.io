@@ -1,3 +1,25 @@
+# Jibbr
+
+**Transform Your Soft Skills with Jibbr**
+
+In today's competitive world, strong soft skills are essential for personal and professional success. Jibbr is your personal coach, leveraging advanced AI to help you develop and refine essential soft skills through interactive, open-ended prompts.
+
+---
+
+### Screenshots
+![1](assets/screenshots/jibbr-1.png)
+![2](assets/screenshots/jibbr-2.png)
+![3](assets/screenshots/jibbr-3.png)
+
+### Promotional Text
+**"Enhance your communication, leadership, and teamwork skills with AI-powered insights from Jibbr."**
+
+### Description
+Transform Your Soft Skills with Jibbr
+
+In today's competitive world, strong soft skills are essential for personal and professional success. Jibbr is your personal coach, leveraging advanced AI to help you develop and refine essential soft skills through interactive, open-ended prompts.
+
+
 # Jibbr Contact and Privacy Policy
 
 Welcome to the contact and privacy page for Jibbr. Here, you’ll find information on how to reach us and details on our privacy practices.
@@ -78,3 +100,6 @@ We welcome feedback! Feel free to contact us at [nugdev2024@gmail.com](mailto:nu
 ---
 
 Thank you for using Jibbr! We hope this FAQ section helps, and please reach out if you have further questions.
+
+### Copyright
+&copy; 2024 Yoonibo LLC - All rights reserved.
