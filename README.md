@@ -17,14 +17,6 @@ In today's competitive world, strong soft skills are essential for personal and 
 
 </div>
 
-### Promotional Text
-**"Enhance your communication, leadership, and teamwork skills with AI-powered insights from Jibbr."**
-
-### Description
-Transform Your Soft Skills with Jibbr
-
-In today's competitive world, strong soft skills are essential for personal and professional success. Jibbr is your personal coach, leveraging advanced AI to help you develop and refine essential soft skills through interactive, open-ended prompts.
-
 
 # Jibbr Contact and Privacy Policy
 
