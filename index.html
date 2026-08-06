@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoonbo Cho — software engineer</title>
+<meta name="description" content="Native mobile apps and applied LLM systems: on-device retrieval, eval harnesses with real ship bars, production LLM backends.">
+<meta property="og:title" content="Yoonbo Cho — software engineer">
+<meta property="og:description" content="Native mobile apps and applied LLM systems.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://yoonbo1.github.io/">
+<meta property="og:url" content="https://yoonbo1.github.io/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <h1>Yoonbo Cho</h1>
+  <p class="intro">Software engineer in Philadelphia. I build native mobile apps and the LLM systems behind them.</p>
+  <p class="status"><span class="dot" aria-hidden="true"></span><span>I&rsquo;m currently open to AI engineering roles, mostly interested in applied LLM systems. <a href="/Yoonbo_Cho_Resume.pdf">Resume</a> &middot; <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a></span></p>
+  <p class="links"><a href="https://github.com/yoonbo1">GitHub</a><!-- &middot; <a href="https://www.linkedin.com/in/TODO">LinkedIn</a>
+       ^ uncomment after the LinkedIn audit; the URL must match the resume exactly --></p>
+</header>
+<main>
+
+<section>
+  <h2>Now</h2>
+  <p>Senior Developer at A View From My Seat, a sports and venue platform with 1.2&nbsp;million
+  monthly active users. I own native iOS and Android end to end: 80+ releases, feature parity
+  throughout. Recent work: rebuilt the maps feature and cut its server costs with caching,
+  reworked every seating chart on the platform as optimized SVG, and shipped vision moderation
+  for seat-view photos.</p>
+</section>
+<section>
+  <h2>Everblue</h2>
+  <p class="meta"><a href="https://everblue.me">everblue.me</a> &middot; live on the App Store &middot; built and operated solo</p>
+  <p>A journal that writes itself. Everblue fuses six passive signal streams (HealthKit,
+  location, calendar, photos, music, weather) into 15-minute windows, scores each window for
+  salience, and writes the day up on its own. I built and operate all of it.</p>
+  <p>Retrieval runs on the phone. BM25 plus MiniLM embeddings with MMR re-ranking and recency
+  decay, in SQLite, in JavaScript. There is no vector database; at this corpus size one would
+  be pure overhead, and I can name the size at which that stops being true. Raw text and
+  embeddings never leave the device.</p>
+  <p>Every prompt change ships through an eval harness that runs the real production pipeline
+  on synthetic days and grades the output with the production rubric. The bar is 92% on
+  generation quality and exactly 100% on memory fabrication. A journaling companion that
+  invents a memory is worse than no journal at all.</p>
+  <p>The backend is Django. It routes Gemini and Claude by feature and subscription tier,
+  retries across providers, redacts PII before every prompt, and got 3&ndash;23% cheaper per
+  request from cache-stable prompts and thinking-token caps.</p>
+  <p>The work I&rsquo;m proudest of is a deletion. Photo captioning originally ran fully
+  on-device: 260MB of FP16 Florence-2 in Core ML, a custom Expo config plugin, a Swift bridge,
+  and four separate out-of-memory root causes debugged on 4GB iPhones. It worked. Then honest
+  accounting showed a 1.1GB bundle that wasn&rsquo;t earning its cost, so I replaced it with a
+  gated backend service and rewrote the privacy copy to match.</p>
+</section>
+<section>
+  <h2>Earlier</h2>
+  <dl class="earlier">
+    <dt>Jibbr <span class="when">2024</span></dt>
+    <dd>An OpenAI-powered conversation coach: interest-tailored prompts and actionable
+    soft-skills feedback.</dd>
+    <dt>+Luv <span class="when">2022</span></dt>
+    <dd>A couples app, shipped to the App Store and Google Play. Real-time WebSocket chat,
+    drawing notes, photo sharing, OpenAI-generated prompts, subscriptions.</dd>
+    <dt>Fabspeed Motorsport <span class="when">2022</span></dt>
+    <dd>Launched wholesale.fabspeed.com, raised site conversion with heatmap-driven UX
+    changes, and built React tools for bulk product updates.</dd>
+  </dl>
+</section>
+<section>
+  <h2>Get in touch</h2>
+  <p>If you work on applied LLM systems, on-device ML, or mobile products, I want to compare
+  notes. Email me at <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a>. I reply,
+  including to mail that starts with &ldquo;I think this part of your stack is wrong.&rdquo;</p>
+</section>
+</main>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>
