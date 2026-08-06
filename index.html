@@ -25,14 +25,6 @@
 <main>
 
 <section>
-  <h2>Now</h2>
-  <p>Senior Developer at A View From My Seat, a sports and venue platform with 1.2&nbsp;million
-  monthly active users. I own native iOS and Android end to end: 80+ releases, feature parity
-  throughout. Recent work: rebuilt the maps feature and cut its server costs with caching,
-  reworked every seating chart on the platform as optimized SVG, and shipped vision moderation
-  for seat-view photos.</p>
-</section>
-<section>
   <h2>Everblue</h2>
   <p class="meta"><a href="https://everblue.me">everblue.me</a> &middot; live on the App Store &middot; built and operated solo</p>
   <p>A journal that writes itself. Everblue fuses six passive signal streams (HealthKit,
@@ -54,6 +46,28 @@
   and four separate out-of-memory root causes debugged on 4GB iPhones. It worked. Then honest
   accounting showed a 1.1GB bundle that wasn&rsquo;t earning its cost, so I replaced it with a
   gated backend service and rewrote the privacy copy to match.</p>
+</section>
+<section>
+  <h2>tickatap</h2>
+  <p class="meta"><a href="https://tickatap.com">tickatap.com</a> &middot; live &middot; built and operated solo</p>
+  <p>What to do today or this weekend: shows, movies, food. tickatap ranks a worldwide event
+  catalog to your taste and turns a ticket into a full plan, one shareable itinerary at a
+  time. It went live in 2026 and ships daily.</p>
+  <p>Under it: a 9-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js 15
+  on the web, Expo on mobile, Postgres and Redis underneath, 1,650+ tests green in CI. Every
+  commerce integration sits behind a provider interface with a mock, so the whole stack runs
+  and tests offline.</p>
+  <p>The booking agent, Tap, has one hard rule: it cannot execute a purchase without an active
+  mandate, and the rule lives in the tool executor, not the prompt. A 25-case adversarial
+  suite passes at 100% and gates CI.</p>
+</section>
+<section>
+  <h2>A View From My Seat</h2>
+  <p class="meta">Senior Developer &middot; Nov 2024 &ndash; Aug 2026</p>
+  <p>A sports and venue platform with 1.2&nbsp;million monthly active users. I owned native iOS
+  and Android end to end: 80+ releases, feature parity throughout. Along the way I rebuilt the
+  maps feature and cut its server costs with caching, reworked every seating chart on the
+  platform as optimized SVG, and shipped vision moderation for seat-view photos.</p>
 </section>
 <section>
   <h2>Earlier</h2>
