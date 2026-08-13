@@ -19,16 +19,15 @@
   <h1>Yoonbo Cho</h1>
   <p class="intro">Software engineer in Philadelphia. I build native mobile apps and the LLM systems behind them.</p>
   <p class="status"><span class="dot" aria-hidden="true"></span><span>I&rsquo;m currently open to AI engineering roles, mostly interested in applied LLM systems. <a href="/Yoonbo_Cho_Resume.pdf">Resume</a> &middot; <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a></span></p>
-  <p class="links"><a href="https://github.com/yoonbo1">GitHub</a><!-- &middot; <a href="https://www.linkedin.com/in/TODO">LinkedIn</a>
-       ^ uncomment after the LinkedIn audit; the URL must match the resume exactly --></p>
+  <p class="links"><a href="https://github.com/yoonbo1">GitHub</a> &middot; <a href="https://www.linkedin.com/in/yoonbo-cho-9780301b9/">LinkedIn</a></p>
 </header>
 <main>
 
 <section>
   <h2>Everblue</h2>
   <p class="meta"><a href="https://everblue.me">everblue.me</a> &middot; live on the App Store &middot; built and operated solo</p>
-  <p>A journal that writes itself. Everblue fuses six passive signal streams (HealthKit,
-  location, calendar, photos, music, weather) into 15-minute windows, scores each window for
+  <p>A journal that writes itself. Everblue fuses five passive signal streams (HealthKit,
+  calendar, photos, music, weather) into 15-minute windows, scores each window for
   salience, and writes the day up on its own. I built and operate all of it.</p>
   <p>Retrieval runs on the phone. BM25 plus MiniLM embeddings with MMR re-ranking and recency
   decay, in SQLite, in JavaScript. There is no vector database; at this corpus size one would
@@ -39,10 +38,10 @@
   generation quality and exactly 100% on memory fabrication. A journaling companion that
   invents a memory is worse than no journal at all.</p>
   <p>The backend is Django. It routes Gemini and Claude by feature and subscription tier,
-  retries across providers, redacts PII before every prompt, and got 3&ndash;23% cheaper per
-  request from cache-stable prompts and thinking-token caps.</p>
+  retries across providers, redacts PII before every prompt, and instruments billing per
+  request so cache-stable prompts and thinking-token caps get tuned against real numbers.</p>
   <p>The work I&rsquo;m proudest of is a deletion. Photo captioning originally ran fully
-  on-device: 260MB of FP16 Florence-2 in Core ML, a custom Expo config plugin, a Swift bridge,
+  on-device: about 500MB of FP16 Florence-2 in Core ML, a custom Expo config plugin, a Swift bridge,
   and four separate out-of-memory root causes debugged on 4GB iPhones. It worked. Then honest
   accounting showed a 1.1GB bundle that wasn&rsquo;t earning its cost, so I replaced it with a
   gated backend service and rewrote the privacy copy to match.</p>
@@ -53,13 +52,16 @@
   <p>What to do today or this weekend: shows, movies, food. tickatap ranks a worldwide event
   catalog to your taste and turns a ticket into a full plan, one shareable itinerary at a
   time. It went live in 2026 and ships daily.</p>
-  <p>Under it: a 9-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js 15
-  on the web, Expo on mobile, Postgres and Redis underneath, 1,650+ tests green in CI. Every
+  <p>Under it: a 10-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js 15
+  on the web, Expo on mobile, Postgres and Redis underneath, and about 2,000 tests green. Every
   commerce integration sits behind a provider interface with a mock, so the whole stack runs
   and tests offline.</p>
-  <p>The booking agent, Tap, has one hard rule: it cannot execute a purchase without an active
-  mandate, and the rule lives in the tool executor, not the prompt. A 25-case adversarial
-  suite passes at 100% and gates CI.</p>
+  <p>There was a booking agent, Tap, with one hard rule: it could not execute a purchase
+  without an active mandate, and the rule lived in the tool executor rather than the prompt.
+  A 25-case adversarial suite held it at 100%. I retired the surface in July 2026, when it
+  peaked at 13.3% task success against a 90% bar. The mandate model and the
+  single-consumption invariant stayed, because those are true of the domain no matter what
+  calls them.</p>
 </section>
 <section>
   <h2>A View From My Seat</h2>
