@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yoonbo Cho — software engineer</title>
-<meta name="description" content="Native mobile apps and applied LLM systems: on-device retrieval, eval harnesses with real ship bars, production LLM backends.">
+<meta name="description" content="Applied LLM systems and native mobile apps: agent pipelines that fail honestly, eval harnesses with real ship bars, on-device retrieval, production LLM backends.">
 <meta property="og:title" content="Yoonbo Cho — software engineer">
-<meta property="og:description" content="Native mobile apps and applied LLM systems.">
+<meta property="og:description" content="Applied LLM systems and native mobile apps.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://yoonbo1.github.io/">
 <meta property="og:url" content="https://yoonbo1.github.io/">
@@ -17,12 +17,41 @@
 <body>
 <header>
   <h1>Yoonbo Cho</h1>
-  <p class="intro">Software engineer in Philadelphia. I build native mobile apps and the LLM systems behind them.</p>
+  <p class="intro">Software engineer in Philadelphia. I build consumer products and the LLM systems inside them.</p>
   <p class="status"><span class="dot" aria-hidden="true"></span><span>I&rsquo;m currently open to AI engineering roles, mostly interested in applied LLM systems. <a href="/Yoonbo_Cho_Resume.pdf">Resume</a> &middot; <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a></span></p>
   <p class="links"><a href="https://github.com/yoonbo1">GitHub</a> &middot; <a href="https://www.linkedin.com/in/yoonbo-cho-9780301b9/">LinkedIn</a></p>
 </header>
 <main>
 
+<section>
+  <h2>tickatap</h2>
+  <p class="meta"><a href="https://tickatap.com">tickatap.com</a> &middot; live &middot; built and operated solo</p>
+  <p>You pick a day, they pick what they&rsquo;re into, and it&rsquo;s a plan. tickatap turns
+  going out with friends into an invitation: the host names the day, each friend taps through
+  a full-screen board of real events and places, and the plan builds itself the moment the
+  last person finishes. Round two handles the mismatches. It went live in 2026 and ships
+  daily.</p>
+  <p>The board is fed by a daily curation agent with a two-tier model split. Bulk page
+  extraction runs on a local 14B model I chose by measuring two candidates head to head on
+  the same real page; one frontier model call per city writes the final board. Behind it sits
+  a 193-source registry spanning more than 40 US cities, every URL probed live before it was
+  allowed in. When a dependency is down, the run reports an honest skip on the ops console.
+  It never invents an event.</p>
+  <p>The same discipline runs the marketing side: a studio renders short-form vertical video
+  from live product data, the script may only choose from real candidate places validated
+  back by name, and a person approves every post.</p>
+  <p>Under it: a 10-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js
+  15 on the web, Expo on mobile, Postgres and Redis underneath, 37 SQL migrations, and 3,682
+  tests passing with no database, no network, and no vendor keys. Every commerce integration
+  sits behind a provider interface with a mock, so the whole stack runs and tests offline. A
+  native iPhone app is in progress in the same repo.</p>
+  <p>There was a booking agent, Tap, with one hard rule: it could not execute a purchase
+  without an active mandate, and the rule lived in the tool executor rather than the prompt.
+  A 25-case adversarial suite held it at 100%. I retired the surface in July 2026, when it
+  peaked at 13.3% task success against a 90% bar. The mandate model and the
+  single-consumption invariant stayed, because those are true of the domain no matter what
+  calls them.</p>
+</section>
 <section>
   <h2>Everblue</h2>
   <p class="meta"><a href="https://everblue.me">everblue.me</a> &middot; live on the App Store &middot; built and operated solo</p>
@@ -47,25 +76,8 @@
   gated backend service and rewrote the privacy copy to match.</p>
 </section>
 <section>
-  <h2>tickatap</h2>
-  <p class="meta"><a href="https://tickatap.com">tickatap.com</a> &middot; live &middot; built and operated solo</p>
-  <p>What to do today or this weekend: shows, movies, food. tickatap ranks a worldwide event
-  catalog to your taste and turns a ticket into a full plan, one shareable itinerary at a
-  time. It went live in 2026 and ships daily.</p>
-  <p>Under it: a 10-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js 15
-  on the web, Expo on mobile, Postgres and Redis underneath, and about 2,000 tests green. Every
-  commerce integration sits behind a provider interface with a mock, so the whole stack runs
-  and tests offline.</p>
-  <p>There was a booking agent, Tap, with one hard rule: it could not execute a purchase
-  without an active mandate, and the rule lived in the tool executor rather than the prompt.
-  A 25-case adversarial suite held it at 100%. I retired the surface in July 2026, when it
-  peaked at 13.3% task success against a 90% bar. The mandate model and the
-  single-consumption invariant stayed, because those are true of the domain no matter what
-  calls them.</p>
-</section>
-<section>
   <h2>A View From My Seat</h2>
-  <p class="meta">Senior Developer &middot; Nov 2024 &ndash; Aug 2026</p>
+  <p class="meta">Senior Developer &middot; Nov 2024 &ndash; Jul 2026</p>
   <p>A sports and venue platform with 1.2&nbsp;million monthly active users. I owned native iOS
   and Android end to end: 80+ releases, feature parity throughout. Along the way I rebuilt the
   maps feature and cut its server costs with caching, reworked every seating chart on the
