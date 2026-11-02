@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIPAA and LLMs in late 2026: what a BAA doesn't cover — Yoonbo Cho</title>
+<meta name="description" content="Notes for engineers putting health data near a model: BAA scope, zero data retention, ePHI you forget you have, and the state laws that apply anyway.">
+<link rel="canonical" href="https://yoonbo1.github.io/writing/hipaa-and-llms-what-a-baa-does-not-cover/">
+<meta property="og:url" content="https://yoonbo1.github.io/writing/hipaa-and-llms-what-a-baa-does-not-cover/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>HIPAA and LLMs in late 2026: what a BAA doesn't cover</h1>
+<p class="post-meta">Nov 2, 2026</p>
+<p><em>An engineer's reading of where HIPAA stands for LLM systems in November 2026. Not legal advice.</em></p>
+<p>The sentence I hear most often from teams building health AI is "the vendor signed a BAA, so we're fine." I believed something close to it before I built Arbiter, my clinical-document RAG prototype (synthetic records only). Reading the vendor terms properly changed how I'd design the whole thing.</p>
+<p>Here is what I found, with sources. Regulations and vendor pages change often, so check the dates.</p>
+<h2>There is still no AI-specific HIPAA rule</h2>
+<p>HIPAA doesn't have a chapter on models. The same Privacy and Security Rules apply to a prompt as to a database row. What has changed is the pressure around them.</p>
+<p>HHS proposed a major Security Rule update in January 2025: a written technology asset inventory and network map, encryption of ePHI at rest and in transit, MFA, vulnerability scans every six months, and a yearly penetration test. As of now it is still a proposal. The regulatory agenda reportedly pushed the final rule to 2027, and a large coalition of provider groups has asked HHS to withdraw it. I'd still build to it, because the enforcement trend points the same way. OCR's risk analysis initiative kept producing settlements through 2026, including $700,000 from Ambry Genetics in September after a phishing attack.</p>
+<h2>A BAA covers features, not companies</h2>
+<p>This was the part that surprised me. Every major provider that signs a BAA limits it to specific products and configurations.</p>
+<ul><li><strong>Anthropic</strong> covers "HIPAA-ready" setups that an org owner turns on. Its own page excludes the Batch and Files APIs, code execution, web fetch, and connectors or MCP.</li><li><strong>OpenAI's</strong> API coverage applies to listed endpoints, with modified retention enabled per organization and project.</li><li><strong>AWS</strong> lists Bedrock as a HIPAA-eligible service, and <strong>Google Cloud</strong> lists its generative AI agent platform. Pre-release features are generally excluded.</li></ul>
+<p>So the real question isn't "do they sign a BAA". It's "is every call my code makes going to a covered feature". A batch job that someone adds later to save money can quietly fall outside the agreement. In Arbiter I'd treat the list of covered endpoints as configuration the code checks, the same way it refuses to call a model before a document is de-identified.</p>
+<h2>Zero data retention is not a BAA</h2>
+<p>Zero data retention (ZDR) means the provider doesn't keep your prompts. It doesn't make the provider your business associate, and it isn't available for every model. Anthropic notes that some models need 30-day retention and can't run under ZDR. You need both, and they're set in different places.</p>
+<p>I ran into the same gap from the other side in Everblue, my journaling app. Whether a provider retains prompts is account configuration, not code, so the code has a flag for ZDR routing that stays off until someone verifies it in the dashboard. The app's privacy wording reads that flag. If you can't point to the setting, don't make the claim.</p>
+<h2>You probably have more ePHI than you think</h2>
+<p>Teams protect the documents and forget what the pipeline creates from them:</p>
+<ul><li>embeddings of clinical text</li><li>prompt and response logs</li><li>prompt caches</li><li>vector indexes and their metadata</li><li>eval sets copied from production "just for testing"</li></ul>
+<p>I'd treat all of these as ePHI. They belong in the risk analysis and the asset inventory, and a missing or shallow risk analysis is the most common theme in OCR settlements. In Arbiter the map back to real identifiers is encrypted per tenant and never enters the vector index, so the index holds only scrubbed text.</p>
+<h2>Removing the 18 identifiers is half of Safe Harbor</h2>
+<p>Safe Harbor has two conditions. You remove the 18 listed identifiers, and you have no actual knowledge that what's left could identify the person. Free-text clinical notes make the second condition harder than it sounds. A rare diagnosis plus a job title plus a town can identify someone without any of the 18 present.</p>
+<p>A February 2026 preprint from NYU (not yet peer reviewed) ran a linkage attack on about 223,000 scrubbed notes and re-identified a small share of patients uniquely, up to 0.34%. That sounds small until you multiply it by a hospital's volume. For notes, Expert Determination, where a qualified expert certifies the risk is very small, is often the better route.</p>
+<p>My own testing showed the first condition is hard too. Off-the-shelf detection missed ZIP codes in 14 of 20 synthetic documents while my recall metric read 0.967, because it matched whole strings.</p>
+<h2>HIPAA isn't the only rule that applies</h2>
+<p>Even where HIPAA doesn't reach, state law might:</p>
+<ul><li><strong>California AB 3030</strong> requires a disclaimer on generative-AI messages to patients, plus a way to reach a human, unless a licensed clinician reviewed the message.</li><li><strong>Illinois</strong> (since August 2025) bars AI from providing therapy or making treatment decisions.</li><li><strong>Texas</strong> requires providers to disclose AI use in care and to review AI-generated records.</li><li><strong>Washington's My Health My Data Act</strong> covers consumer health data outside HIPAA and lets individuals sue.</li></ul>
+<p>And under Section 1557, covered entities have to make reasonable efforts to find decision-support tools that use race, sex, age or disability as inputs and reduce the risk of discrimination.</p>
+<h2>Takeaways</h2>
+<ol><li>Treat a BAA as a list of covered features. Make your code check that every model call goes to one.</li><li>Get the BAA and zero data retention separately, and check that your model supports ZDR at all.</li><li>Inventory derived data: embeddings, logs, caches, indexes and eval sets.</li><li>For free-text notes, plan for Expert Determination, or at least test for re-identification beyond the 18 identifiers.</li><li>Check state law even when HIPAA doesn't apply.</li></ol>
+<p>Sources: <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html">HHS de-identification guidance</a>, <a href="https://www.federalregister.gov/documents/2025/01/06/2024-30983/hipaa-security-rule-to-strengthen-the-cybersecurity-of-electronic-protected-health-information">Security Rule NPRM</a>, <a href="https://www.hhs.gov/press-room/hhs-office-civil-rights-settles-hipaa-investigation-ambry-genetics-phishing-attack-affecting-225000-individuals.html">Ambry Genetics settlement</a>, <a href="https://privacy.claude.com/en/articles/8114513-will-anthropic-sign-a-business-associate-agreement-baa-and-if-so-for-which-products">Anthropic BAA scope</a>, <a href="https://cdn.openai.com/osa/baa-hipaa-guide.pdf">OpenAI BAA guide</a>, <a href="https://aws.amazon.com/compliance/hipaa-eligible-services-reference/">AWS HIPAA-eligible services</a>, <a href="https://docs.cloud.google.com/docs/security/compliance/hipaa">Google Cloud HIPAA</a>, <a href="https://arxiv.org/pdf/2602.08997v1">NYU preprint</a>, <a href="https://www.govinfo.gov/content/pkg/FR-2024-05-06/html/2024-08711.htm">Section 1557 final rule</a>.</p>
+<p><em>I'm looking for an AI engineering role (remote, US). If your team puts health data near LLMs, I'd love to talk.</em></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>

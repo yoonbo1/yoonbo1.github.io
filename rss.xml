@@ -6,6 +6,13 @@
   <description>Native mobile apps and applied LLM systems.</description>
   <language>en-us</language>
   <item>
+    <title>HIPAA and LLMs in late 2026: what a BAA doesn't cover</title>
+    <link>https://yoonbo1.github.io/writing/hipaa-and-llms-what-a-baa-does-not-cover/</link>
+    <guid>https://yoonbo1.github.io/writing/hipaa-and-llms-what-a-baa-does-not-cover/</guid>
+    <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Notes for engineers putting health data near a model: BAA scope, zero data retention, ePHI you forget you have, and the state laws that apply anyway.</description>
+  </item>
+  <item>
     <title>An eval harness for a one-person AI product</title>
     <link>https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/</link>
     <guid>https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/</guid>
