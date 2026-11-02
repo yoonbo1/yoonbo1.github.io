@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbiter AI — Yoonbo Cho</title>
+<meta name="description" content="A HIPAA-oriented RAG prototype for clinical documents. Synthetic data only, launched September 2026.">
+<link rel="canonical" href="https://yoonbo1.github.io/arbiter/">
+<meta property="og:url" content="https://yoonbo1.github.io/arbiter/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>Arbiter AI</h1>
+<p class="post-meta">A HIPAA-oriented RAG prototype for clinical documents. Synthetic data only, launched September 2026.</p>
+<p>Arbiter answers questions about clinical documents with citations, and it is built around one rule enforced in code: <strong>nothing reaches a model until the document is marked de-identified.</strong> It is a prototype tested on synthetic records only. No real patients, no customers, no compliance claim. Code: <a href="https://github.com/yoonbo1/arbiterai">github.com/yoonbo1/arbiterai</a>.</p>
+<h2>How it works</h2>
+<ul><li>FastAPI gateway, Redis Streams, LangGraph workers, Postgres with pgvector.</li><li>Documents are scrubbed with Presidio before indexing. The map back to the original identifiers is encrypted per tenant, never stored in the vector index, and used only at the last step for the caller's own patient.</li><li>Hybrid retrieval scoped to tenant and patient: pgvector cosine over bge-small embeddings fused with BM25 by reciprocal rank fusion.</li><li>Every answer is checked before it's returned. It's rejected on an identifier leak, a missing citation, or a faithfulness score below 0.7.</li></ul>
+<h2>Results on the synthetic set</h2>
+<ul><li>De-identification recall went from <strong>0.967 to 1.000</strong> on a strict per-component metric. The first metric matched whole strings and hid ZIP codes surviving in 14 of 20 documents.</li><li>Answer accuracy went from 23/40 to 38/40 in four measured iterations. The two misses are OCR misreads the model copied faithfully.</li><li>Zero cross-patient leaks. p50 3.6 s, p95 4.1 s.</li><li>A power analysis showed 40 questions couldn't resolve differences under about 15 points, so the gold set grew to 346 questions.</li></ul>
+<h2>What testing found</h2>
+<ul><li>Presidio's defaults missed labelled MRNs and phone numbers with extensions, and its date filter removed "daily" and "nightly" from medication lists. Custom recognizers fixed each one, including OCR-tolerant MRN labels after Tesseract read "MRN:" as "MAN:".</li><li>The services were connecting as the Postgres superuser, which bypasses row-level security entirely. Now they connect as an RLS-bound role, and cross-tenant probes prove it: another tenant's job returns 404, zero rows are visible, and inserts are rejected.</li><li>The output leak check used a looser threshold than the input scrub, so a bare SSN redacted on the way in could pass on the way out. One threshold now applies in both directions.</li><li>62 passing tests across auth, de-identification and retrieval. A tenant can't process anything until its BAA is marked signed.</li></ul>
+<p>Write-up: <a href="/writing/deidentifying-clinical-documents-for-an-llm/">What I learned de-identifying clinical documents for an LLM</a></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>

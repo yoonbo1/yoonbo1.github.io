@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everblue — Yoonbo Cho</title>
+<meta name="description" content="An AI journaling app on the App Store. Built and operated solo since January 2026.">
+<link rel="canonical" href="https://yoonbo1.github.io/everblue/">
+<meta property="og:url" content="https://yoonbo1.github.io/everblue/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>Everblue</h1>
+<p class="post-meta">An AI journaling app on the App Store. Built and operated solo since January 2026.</p>
+<p>Everblue is a chat-first AI journal for iPhone: <a href="https://everblue.me">everblue.me</a>. People write about their lives in it, so I treat every privacy line in the app as a technical claim that the code has to back up.</p>
+<h2>Privacy, in code</h2>
+<ul><li><strong>The journal stays on the phone, and so does retrieval.</strong> MiniLM embeddings through ONNX, BM25 and recency decay with MMR re-ranking, all in SQLite. The index and the embeddings never leave the device. No vector database, because at this corpus size it would be pure overhead.</li><li><strong>The companion has run entirely on-device</strong> on Apple's Foundation Models, with a prompt chain fitted to the 4k context and the grading checks ported to on-device JavaScript.</li><li><strong>What leaves the phone is listed exactly.</strong> Chat and photos the user adds go to model providers through OpenRouter. Photos pass an on-device sensitive-content check and are EXIF-stripped first, and the backend passes requests along without keeping them.</li><li><strong>Zero data retention is treated as configuration, not a promise.</strong> A flag for ZDR routing stays off until it's verified in the provider dashboard, and the app reads its privacy wording from a backend endpoint that reports the real posture, falling back to the cautious version.</li></ul>
+<h2>Quality</h2>
+<ul><li>Every prompt change goes through an eval harness that runs the production pipeline on synthetic days: a bar of <strong>92%</strong> on generation quality and <strong>100%</strong> on no-fabrication.</li><li>A recall guard re-rolls any memory reply containing words it can't trace back to the journal, so the companion can't present an invented memory as real.</li></ul>
+<h2>The decision I'm proudest of</h2>
+<p>Photo captioning first ran fully on-device: about 500MB of Florence-2 in Core ML, a custom Expo config plugin and a Swift bridge, after debugging four separate out-of-memory crashes on 4GB iPhones. It worked. Then honest accounting showed the bundle wasn't earning its cost, so I replaced it with a gated backend service and cut about <strong>1.1GB</strong> from the app.</p>
+<p>Stack: React Native / Expo, Django on Heroku, PostgreSQL, RevenueCat, GitHub Actions.</p>
+<p>Write-up: <a href="/writing/privacy-copy-should-match-your-config/">Don't let your app promise more privacy than your config delivers</a></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>
