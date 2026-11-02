@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What I learned de-identifying clinical documents for an LLM — Yoonbo Cho</title>
+<meta name="description" content="Notes from Arbiter, a clinical-document RAG prototype on synthetic records: Safe Harbor, flattering recall metrics, and where Presidio's defaults miss.">
+<link rel="canonical" href="https://yoonbo1.github.io/writing/deidentifying-clinical-documents-for-an-llm/">
+<meta property="og:url" content="https://yoonbo1.github.io/writing/deidentifying-clinical-documents-for-an-llm/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>What I learned de-identifying clinical documents for an LLM</h1>
+<p class="post-meta">Oct 26, 2026</p>
+<p><em>Notes from building Arbiter, a clinical-document RAG prototype that runs on synthetic records only.</em></p>
+<p>The rule I started with was simple: nothing reaches a model until the document has been de-identified. Every other decision followed from that.</p>
+<p>I want to be upfront about what Arbiter is. It's a prototype, launched in September 2026, tested on 20 synthetic documents and 40 gold questions. No real patients, no customers, no compliance claims. But building it taught me where de-identification goes wrong, and most of it applies to any team putting health data near an LLM.</p>
+<h2>HIPAA gives you two routes</h2>
+<p>The Safe Harbor method removes 18 kinds of identifiers: names, most of a ZIP code, all date elements except the year, phone numbers, medical record numbers and so on. The other route, Expert Determination, has a qualified statistician certify that re-identification risk is very small. A prototype like mine works toward Safe Harbor because you can test it mechanically.</p>
+<h2>Make "de-identified" a state the code checks</h2>
+<p>In Arbiter, a document moves through a pipeline (FastAPI, Redis Streams, LangGraph, Postgres with pgvector), and the model step refuses to run unless the document is marked de-identified. Presidio scrubs it before indexing. The map back to the original identifiers is encrypted per tenant. Nobody has to remember the rule, because the pipeline enforces it.</p>
+<h2>Your recall number can lie</h2>
+<p>My first metric matched whole entities and read 0.967. Then I scored each address component separately. ZIP codes had survived in 14 of 20 documents and street lines in 7. Under Safe Harbor, you may keep only the first three digits of a ZIP, and only where that area has more than 20,000 people. A whole-string metric hid exactly the identifier that matters. With a strict per-component metric and new recognizers, it reached 1.000.</p>
+<h2>Default recognizers don't know charts</h2>
+<p>Presidio is a good base, but on clinical text:</p>
+<ul><li>labelled MRNs scored below the threshold and never fired;</li><li>phone numbers with extensions got through;</li><li>the date filter redacted "daily" and "nightly", which caused 11 of 12 misses on medication lists.</li></ul>
+<p>That last one is the over-redaction problem nobody warns you about. Strip too much and the model can't answer the clinical question, so people start looking for ways around the filter.</p>
+<h2>Check the output, too</h2>
+<p>An answer is rejected if it leaks an identifier, misses a citation, or scores below 0.7 on faithfulness. The tests found a bug the eval didn't: the output leak check used a looser threshold than the input scrub, so a bare SSN redacted on the way in could pass on the way out. Use one standard in both directions.</p>
+<h2>Isolation has to be real</h2>
+<p>Row-level security sits on every table holding PHI, and retrieval is hard-filtered by patient. During bring-up I found the services connecting as the Postgres superuser, which bypasses row-level security entirely. The policies were there and none of them applied. Cross-tenant probes now prove it: another tenant's job returns 404, zero rows are visible, and cross-tenant inserts are rejected.</p>
+<h2>Contracts come before processing</h2>
+<p>Any vendor that handles PHI for you needs a Business Associate Agreement. Arbiter has a gate for that: a tenant can't process anything until its BAA is marked signed.</p>
+<h2>Takeaways</h2>
+<ol><li>Enforce de-identification as a pipeline state, not a convention.</li><li>Score each identifier component separately. ZIP codes and dates are where whole-string metrics fool you.</li><li>Test recognizers on realistic documents, and watch for over-redaction as closely as for leaks.</li><li>Run the same leak check on the way out as on the way in.</li><li>Prove tenant isolation with probes. Make sure the app connects as a role that row-level security actually binds.</li></ol>
+<p><em>I'm looking for an AI engineering role (remote, US). If your team puts sensitive data near LLMs, I'd love to talk.</em></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>

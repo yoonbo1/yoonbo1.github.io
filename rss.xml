@@ -5,6 +5,33 @@
   <link>https://yoonbo1.github.io</link>
   <description>Native mobile apps and applied LLM systems.</description>
   <language>en-us</language>
-
+  <item>
+    <title>An eval harness for a one-person AI product</title>
+    <link>https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/</link>
+    <guid>https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/</guid>
+    <pubDate>Sun, 01 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Release bars for a nondeterministic product when you are the whole team.</description>
+  </item>
+  <item>
+    <title>A 14B local model beat a 26B one on my real task</title>
+    <link>https://yoonbo1.github.io/writing/a-14b-local-model-beat-a-26b-one/</link>
+    <guid>https://yoonbo1.github.io/writing/a-14b-local-model-beat-a-26b-one/</guid>
+    <pubDate>Fri, 30 Oct 2026 12:00:00 GMT</pubDate>
+    <description>Choosing a local extraction model by measuring two candidates on the same real pages.</description>
+  </item>
+  <item>
+    <title>Don't let your app promise more privacy than your config delivers</title>
+    <link>https://yoonbo1.github.io/writing/privacy-copy-should-match-your-config/</link>
+    <guid>https://yoonbo1.github.io/writing/privacy-copy-should-match-your-config/</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 GMT</pubDate>
+    <description>How Everblue decides what it may say about AI and your data: on-device first, zero data retention as a flag, and a never-claim list.</description>
+  </item>
+  <item>
+    <title>What I learned de-identifying clinical documents for an LLM</title>
+    <link>https://yoonbo1.github.io/writing/deidentifying-clinical-documents-for-an-llm/</link>
+    <guid>https://yoonbo1.github.io/writing/deidentifying-clinical-documents-for-an-llm/</guid>
+    <pubDate>Mon, 26 Oct 2026 12:00:00 GMT</pubDate>
+    <description>Notes from Arbiter, a clinical-document RAG prototype on synthetic records: Safe Harbor, flattering recall metrics, and where Presidio's defaults miss.</description>
+  </item>
 </channel>
 </rss>

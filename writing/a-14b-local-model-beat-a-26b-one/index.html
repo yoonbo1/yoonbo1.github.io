@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A 14B local model beat a 26B one on my real task — Yoonbo Cho</title>
+<meta name="description" content="Choosing a local extraction model by measuring two candidates on the same real pages.">
+<link rel="canonical" href="https://yoonbo1.github.io/writing/a-14b-local-model-beat-a-26b-one/">
+<meta property="og:url" content="https://yoonbo1.github.io/writing/a-14b-local-model-beat-a-26b-one/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>A 14B local model beat a 26B one on my real task</h1>
+<p class="post-meta">Oct 30, 2026</p>
+<p><em>On one real page, the smaller model gave me more events for fewer tokens.</em></p>
+<p>I already had a 26B model loaded on my machine when I built the event-extraction step for tickatap. The obvious move was to use it: it was resident, it was bigger, and bigger usually means better. Before committing, I ran both candidates head-to-head on the same page. The 26B model returned 3 events, truncated, in 3,117 tokens. A 14B model (qwen2.5-coder-14b, served through LM Studio on MLX) returned 11 clean events in 968 tokens. I went with the 14B.</p>
+<p>Here is how that decision fit into the pipeline, and what I took from it.</p>
+<h2>The job was narrow, and that mattered</h2>
+<p>tickatap is an invitation-first going-out planner: a host picks a day, friends tap what they're into from a board of real events and places, and the plan builds itself. That board needs fresh events every day. I built a daily event-curation agent lane on a two-tier model split. The first tier reads source pages and extracts events from each one. The second tier is one frontier curation call per city. The source list is a 193-source registry spanning 40+ US cities, so the extraction tier does the volume work. It doesn't need broad world knowledge. It needs to read a page and write down what's on it, completely, in a structure the rest of the system can use.</p>
+<h2>The head-to-head was one page, measured properly</h2>
+<p>I gave both models the same page and compared what came back on two axes at once: how many usable events, and how many tokens it took to produce them. The 14B model produced 11 clean events in 968 tokens. The 26B model spent more than three times the tokens and produced fewer than a third of the events, and those were truncated. This was a head-to-head, not a benchmark suite. But it was on my real input, and the gap was not subtle. A comparison like that, on the actual task, told me more than parameter counts or general reputation could.</p>
+<h2>A truncated answer is not a cheaper answer</h2>
+<p>It's tempting to read token counts as cost and stop there. But the 26B run was worse on both counts: more tokens, and output that was cut off. For extraction, an incomplete record is a liability. Something downstream has to notice it is broken, or it slips through as a half-event on someone's board. Measuring completeness and tokens together is what made the decision clear. Either number alone could have pointed the wrong way.</p>
+<h2>The frontier model still has a job, just a smaller one</h2>
+<p>Choosing the local model for extraction didn't mean dropping frontier models. Curation is the step that benefits from stronger judgment: looking across a city's extracted events and deciding what belongs on the board. So that step gets one frontier call per city, not one per page. The split follows what each step needs. High-volume, page-by-page reading went to the local 14B. The single judgment call per city went to the frontier model. Picking a model per step, rather than one model for the whole pipeline, is what made the local model viable at all.</p>
+<h2>The reliability work is what made it trustworthy</h2>
+<p>A good model choice doesn't help if the pipeline around it is fragile. Every URL in the registry was probed live before it was enrolled, so dead sources never entered the list. The lane runs from launchd cron with a run lock, so two runs can't overlap, plus a freshness guard and retries. The rule I care about most: an outage is an honest per-run skip, never fabricated events. If a source is down, that run records nothing for it. On a product where people make real plans from the board, an empty slot is better than an invented show.</p>
+<h2>Takeaways</h2>
+<ol><li>Test candidate models on your real input before choosing by size or reputation. One head-to-head on the actual task can settle what a spec sheet can't.</li><li>Measure output completeness and token use together. A truncated result that costs more tokens is worse on both axes, not a trade-off.</li><li>Split the pipeline by step. Put high-volume, well-defined work on a local model and save the frontier call for the judgment step.</li><li>Vet sources before they enter the system, and lock and guard the scheduled run.</li><li>When a source fails, skip the run and record the skip. Never fill the gap with generated data.</li></ol>
+<p><em>I'm looking for an AI engineering role (remote, US). If your team picks models by measuring them on the real task, I'd love to talk.</em></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>

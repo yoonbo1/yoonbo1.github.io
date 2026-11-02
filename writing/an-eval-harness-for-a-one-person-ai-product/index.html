@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An eval harness for a one-person AI product — Yoonbo Cho</title>
+<meta name="description" content="Release bars for a nondeterministic product when you are the whole team.">
+<link rel="canonical" href="https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/">
+<meta property="og:url" content="https://yoonbo1.github.io/writing/an-eval-harness-for-a-one-person-ai-product/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>An eval harness for a one-person AI product</h1>
+<p class="post-meta">Nov 1, 2026</p>
+<p><em>How I decide whether a prompt change ships in Everblue, an AI journaling app.</em></p>
+<p>When you're the only engineer, it's tempting to change a prompt, try three examples and ship. I did that early on. It went fine until a companion reply "remembered" something the user never wrote. In a journaling app, that breaks trust immediately.</p>
+<p>So every prompt change now goes through one harness.</p>
+<h2>1. Run the real pipeline</h2>
+<p>The harness calls the same production code, not a copy, on synthetic day payloads. No real user data is involved.</p>
+<h2>2. Grade with the production rubric</h2>
+<p>Voice (does it sound like the companion?), specificity (does it mention what actually happened?) and hallucination (does it say anything the day didn't contain?).</p>
+<h2>3. A separate fabrication suite</h2>
+<p>Recall questions where the honest answer is "I don't see that in your entries." The companion has to say so instead of inventing.</p>
+<h2>4. A hard bar</h2>
+<p>92%+ generation quality and 100% no-fabrication. It's a manual gate, not CI. I read every failure myself, because the failures teach me more than the score.</p>
+<h2>5. Free training data</h2>
+<p>Passing runs export a JSONL file I can use for fine-tuning later.</p>
+<h2>Guards at runtime, too</h2>
+<p>Evals catch problems before release; guards catch them live:</p>
+<ul><li>A voice lint runs inside the generation retry loop.</li><li>On a blank day, the companion says there's nothing recorded instead of making something up.</li><li>A grounding pass can only remove unsupported claims, never add new ones.</li><li>If a recalled memory contains words that can't be traced back to the user's own entries, the reply is re-rolled.</li></ul>
+<h2>Porting it on-device</h2>
+<p>When I rebuilt the companion to run on Apple's on-device Foundation Models, I ported the Python grading bars to JavaScript guards and diffed the two for parity. The diff found 8 porting bugs that would have quietly weakened the guards.</p>
+<h2>What I deliberately didn't use</h2>
+<p>No vector database and no LLM framework. Each user's corpus is small and the call graph is linear, so SQLite with hybrid retrieval (BM25 + cosine + recency decay + MMR) was enough. I know roughly where that stops being true, and I'd switch then.</p>
+<h2>Takeaways</h2>
+<ol><li>Run evals on the real pipeline, or you're testing a different system.</li><li>Make "no fabrication" its own suite with a 100% bar.</li><li>Pair offline evals with cheap runtime guards.</li><li>When you port, diff the guards. Bugs hide in translations.</li></ol>
+<p><em>I'm looking for an AI engineering role (remote, US). If evals are a first-class job on your team, let's talk.</em></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yoonbo Cho — software engineer</title>
-<meta name="description" content="Applied LLM systems and native mobile apps: agent pipelines that fail honestly, eval harnesses with real ship bars, on-device retrieval, production LLM backends.">
-<meta property="og:title" content="Yoonbo Cho — software engineer">
-<meta property="og:description" content="Applied LLM systems and native mobile apps.">
+<title>Yoonbo Cho — AI engineer</title>
+<meta name="description" content="AI engineer building privacy-first LLM systems: HIPAA-oriented de-identification, on-device retrieval, local models, and evals with real release bars.">
+<meta property="og:title" content="Yoonbo Cho — AI engineer">
+<meta property="og:description" content="Privacy-first LLM systems: de-identification, on-device retrieval, local models, evals.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://yoonbo1.github.io/">
 <meta property="og:url" content="https://yoonbo1.github.io/">
@@ -17,75 +17,92 @@
 <body>
 <header>
   <h1>Yoonbo Cho</h1>
-  <p class="intro">Software engineer in Philadelphia. I build consumer products and the LLM systems inside them.</p>
-  <p class="status"><span class="dot" aria-hidden="true"></span><span>I&rsquo;m currently open to AI engineering roles, mostly interested in applied LLM systems. <a href="/Yoonbo_Cho_Resume.pdf">Resume</a> &middot; <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a></span></p>
-  <p class="links"><a href="https://github.com/yoonbo1">GitHub</a> &middot; <a href="https://www.linkedin.com/in/yoonbo-cho-9780301b9/">LinkedIn</a></p>
+  <p class="intro">AI engineer. I build LLM products where the privacy rules live in code, not in a policy doc: de-identification before any model sees a record, retrieval that stays on the device, and local models where the data shouldn&rsquo;t travel.</p>
+  <p class="status"><span class="dot" aria-hidden="true"></span><span>Open to AI engineering roles (remote, US). <a href="/Yoonbo_Cho_Resume.pdf">Resume</a> &middot; <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a></span></p>
+  <p class="links"><a href="https://www.linkedin.com/in/yoonbo-cho-9780301b9/">LinkedIn</a> &middot; <a href="https://github.com/yoonbo1">GitHub</a> &middot; <a href="/writing/">Writing</a> &middot; <a href="/rss.xml">RSS</a></p>
+  <ul class="facts">
+    <li><strong>1.2M</strong><span>monthly active users on the apps I owned at A View From My Seat</span></li>
+    <li><strong>0.967 &rarr; 1.000</strong><span>de-identification recall on Arbiter&rsquo;s synthetic clinical set</span></li>
+    <li><strong>3</strong><span>LLM products built and run solo since 2026</span></li>
+  </ul>
 </header>
 <main>
-
 <section>
-  <h2>tickatap</h2>
-  <p class="meta"><a href="https://tickatap.com">tickatap.com</a> &middot; live &middot; built and operated solo</p>
-  <p>You pick a day, they pick what they&rsquo;re into, and it&rsquo;s a plan. tickatap turns
-  going out with friends into an invitation: the host names the day, each friend taps through
-  a full-screen board of real events and places, and the plan builds itself the moment the
-  last person finishes. Round two handles the mismatches. It went live in 2026 and ships
-  daily.</p>
-  <p>The board is fed by a daily curation agent with a two-tier model split. Bulk page
-  extraction runs on a local 14B model I chose by measuring two candidates head to head on
-  the same real page; one frontier model call per city writes the final board. Behind it sits
-  a 193-source registry spanning more than 40 US cities, every URL probed live before it was
-  allowed in. When a dependency is down, the run reports an honest skip on the ops console.
-  It never invents an event.</p>
-  <p>The same discipline runs the marketing side: a studio renders short-form vertical video
-  from live product data, the script may only choose from real candidate places validated
-  back by name, and a person approves every post.</p>
-  <p>Under it: a 10-workspace TypeScript monorepo. Fastify and BullMQ behind the API, Next.js
-  15 on the web, Expo on mobile, Postgres and Redis underneath, 37 SQL migrations, and 3,682
-  tests passing with no database, no network, and no vendor keys. Every commerce integration
-  sits behind a provider interface with a mock, so the whole stack runs and tests offline. A
-  native iPhone app is in progress in the same repo.</p>
-  <p>There was a booking agent, Tap, with one hard rule: it could not execute a purchase
-  without an active mandate, and the rule lived in the tool executor rather than the prompt.
-  A 25-case adversarial suite held it at 100%. I retired the surface in July 2026, when it
-  peaked at 13.3% task success against a 90% bar. The mandate model and the
-  single-consumption invariant stayed, because those are true of the domain no matter what
-  calls them.</p>
+  <h2>Writing</h2>
+  <ul class="posts">
+<li><a href="/writing/an-eval-harness-for-a-one-person-ai-product/">An eval harness for a one-person AI product</a><span class="post-meta">Nov 1, 2026</span>
+<p>Release bars for a nondeterministic product when you are the whole team.</p></li>
+<li><a href="/writing/a-14b-local-model-beat-a-26b-one/">A 14B local model beat a 26B one on my real task</a><span class="post-meta">Oct 30, 2026</span>
+<p>Choosing a local extraction model by measuring two candidates on the same real pages.</p></li>
+<li><a href="/writing/privacy-copy-should-match-your-config/">Don't let your app promise more privacy than your config delivers</a><span class="post-meta">Oct 28, 2026</span>
+<p>How Everblue decides what it may say about AI and your data: on-device first, zero data retention as a flag, and a never-claim list.</p></li>
+<li><a href="/writing/deidentifying-clinical-documents-for-an-llm/">What I learned de-identifying clinical documents for an LLM</a><span class="post-meta">Oct 26, 2026</span>
+<p>Notes from Arbiter, a clinical-document RAG prototype on synthetic records: Safe Harbor, flattering recall metrics, and where Presidio's defaults miss.</p></li>
+  </ul>
+</section>
+<section>
+  <h2>Arbiter</h2>
+  <p class="meta"><a href="https://github.com/yoonbo1/arbiterai">github.com/yoonbo1/arbiterai</a> &middot; prototype &middot; synthetic data only</p>
+  <p>A HIPAA-oriented RAG system for clinical documents, built as a prototype and tested on
+  synthetic records only. No real patients and no compliance claim. It has one rule,
+  enforced in code: nothing reaches a model until the document is marked de-identified.</p>
+  <p>Documents are scrubbed with Presidio before indexing (FastAPI, Redis Streams, LangGraph,
+  Postgres with pgvector). The map back to the original identifiers is encrypted per tenant
+  and never enters the vector index. Row-level security sits on every table holding PHI, and
+  cross-tenant probes prove it: during bring-up the services were connecting as the Postgres
+  superuser, which bypasses row-level security entirely, so the policies existed and applied
+  to nothing.</p>
+  <p>The eval harness caught its own flattering metric. Recall read 0.967 while ZIP codes
+  survived in 14 of 20 documents, because the metric matched whole strings. A per-component
+  metric and new recognizers took it to 1.000, and answer accuracy went from 23/40 to 38/40
+  in four measured iterations. Answers are rejected on an identifier leak, a missing
+  citation, or low faithfulness, and the leak check on the way out uses the same threshold as
+  the scrub on the way in.</p>
 </section>
 <section>
   <h2>Everblue</h2>
   <p class="meta"><a href="https://everblue.me">everblue.me</a> &middot; live on the App Store &middot; built and operated solo</p>
-  <p>A journal that writes itself. Everblue fuses five passive signal streams (HealthKit,
-  calendar, photos, music, weather) into 15-minute windows, scores each window for
-  salience, and writes the day up on its own. I built and operate all of it.</p>
-  <p>Retrieval runs on the phone. BM25 plus MiniLM embeddings with MMR re-ranking and recency
-  decay, in SQLite, in JavaScript. There is no vector database; at this corpus size one would
-  be pure overhead, and I can name the size at which that stops being true. Raw text and
-  embeddings never leave the device.</p>
-  <p>Every prompt change ships through an eval harness that runs the real production pipeline
-  on synthetic days and grades the output with the production rubric. The bar is 92% on
-  generation quality and exactly 100% on memory fabrication. A journaling companion that
-  invents a memory is worse than no journal at all.</p>
-  <p>The backend is Django. It routes Gemini and Claude by feature and subscription tier,
-  retries across providers, redacts PII before every prompt, and instruments billing per
-  request so cache-stable prompts and thinking-token caps get tuned against real numbers.</p>
-  <p>The work I&rsquo;m proudest of is a deletion. Photo captioning originally ran fully
-  on-device: about 500MB of FP16 Florence-2 in Core ML, a custom Expo config plugin, a Swift bridge,
-  and four separate out-of-memory root causes debugged on 4GB iPhones. It worked. Then honest
-  accounting showed a 1.1GB bundle that wasn&rsquo;t earning its cost, so I replaced it with a
-  gated backend service and rewrote the privacy copy to match.</p>
+  <p>An AI journaling app. People write about their lives in it, so I treat its privacy copy
+  as a technical claim that has to be backed by something.</p>
+  <p>The journal is stored on the phone, and so is retrieval: MiniLM embeddings through ONNX,
+  BM25 and recency decay in SQLite. The index and the embeddings never leave the device. The
+  companion has also run entirely on Apple&rsquo;s on-device Foundation Models. What does
+  leave, chat and photos the user adds, is listed exactly: photos pass an on-device
+  sensitive-content check and are EXIF-stripped first, and the backend passes requests along
+  without keeping them.</p>
+  <p>Provider data retention is account configuration, not code, so the code doesn&rsquo;t
+  pretend. A flag for zero-data-retention routing stays off until the routing is verified,
+  and the app reads its privacy wording from a backend endpoint that reports the real
+  posture, falling back to the cautious version.</p>
+  <p>Every prompt change goes through an eval harness that runs the production pipeline on
+  synthetic days: a 92% bar on generation quality and 100% on no-fabrication. A companion
+  that invents a memory is worse than no journal at all.</p>
+</section>
+<section>
+  <h2>tickatap</h2>
+  <p class="meta"><a href="https://tickatap.com">tickatap.com</a> &middot; live &middot; built and operated solo</p>
+  <p>A group going-out planner. The host picks a day, each friend taps what they&rsquo;re into
+  from a board of real events and places, and the plan builds itself when the last person
+  finishes. Friends can vote on a shared night through one link, no account needed.</p>
+  <p>The board is fed by a daily curation agent. Page extraction runs on a local 14B model
+  that I chose by measuring two candidates on the same real pages (11 clean events in 968
+  tokens, against 3 truncated events in 3,117 from a 26B model), so page text never leaves my
+  machine for that step. The planner treats web text as untrusted data, and every stop the
+  model proposes is checked in code against real records before anyone sees it.</p>
+  <p>Analytics are first-party and minimal: no user id, IP or free text, and any parameter
+  not declared in the event schema is dropped before it reaches a third party. Under it is a
+  TypeScript monorepo (Fastify, Next.js 15, Expo, Postgres) with 3,682 tests that run with no
+  database, network or vendor keys.</p>
 </section>
 <section>
   <h2>A View From My Seat</h2>
   <p class="meta">Senior Developer &middot; Nov 2024 &ndash; Jul 2026</p>
   <p>A sports and venue platform with 1.2&nbsp;million monthly active users. I owned native iOS
-  and Android end to end: 80+ releases, feature parity throughout. Along the way I rebuilt the
-  maps feature and cut its server costs with caching, reworked every seating chart on the
-  platform as optimized SVG, and shipped vision moderation for seat-view photos.</p>
+  and Android end to end: 80+ releases, feature parity throughout. I rebuilt the maps feature
+  and cut its server costs with caching, reworked every seating chart on the platform as
+  optimized SVG, and shipped vision moderation for seat-view photos.</p>
   <p>I also automated the seating-chart ingestion pipeline that publishes charts to client
-  websites; a teammate reported it saved a full day of work per chart. And I built a
-  venue-scouting agent that diffs live venue data against stored snapshots daily and alerts
-  only on real changes.</p>
+  websites; a teammate reported it saved a full day of work per chart.</p>
 </section>
 <section>
   <h2>Earlier</h2>
@@ -104,9 +121,9 @@
 </section>
 <section>
   <h2>Get in touch</h2>
-  <p>If you work on applied LLM systems, on-device ML, or mobile products, I want to compare
-  notes. Email me at <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a>. I reply,
-  including to mail that starts with &ldquo;I think this part of your stack is wrong.&rdquo;</p>
+  <p>If your team puts sensitive data near LLMs, or builds on-device or local-model AI, I&rsquo;d
+  like to compare notes. Email <a href="mailto:yoonbocho1@gmail.com">yoonbocho1@gmail.com</a>
+  or message me on <a href="https://www.linkedin.com/in/yoonbo-cho-9780301b9/">LinkedIn</a>.</p>
 </section>
 </main>
 <footer>

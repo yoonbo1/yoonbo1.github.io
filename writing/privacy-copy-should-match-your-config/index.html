@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Don't let your app promise more privacy than your config delivers — Yoonbo Cho</title>
+<meta name="description" content="How Everblue decides what it may say about AI and your data: on-device first, zero data retention as a flag, and a never-claim list.">
+<link rel="canonical" href="https://yoonbo1.github.io/writing/privacy-copy-should-match-your-config/">
+<meta property="og:url" content="https://yoonbo1.github.io/writing/privacy-copy-should-match-your-config/">
+<link rel="alternate" type="application/rss+xml" title="Yoonbo Cho — writing" href="https://yoonbo1.github.io/rss.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232255c4'/><text x='32' y='45' font-family='system-ui' font-size='38' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<p class="crumb"><a href="/">&larr; Yoonbo Cho</a></p>
+<article>
+<h1>Don't let your app promise more privacy than your config delivers</h1>
+<p class="post-meta">Oct 28, 2026</p>
+<p><em>How Everblue decides what it's allowed to say about AI and your data.</em></p>
+<p>"We never store your data." "Your entries are never used to train AI." Plenty of AI apps print lines like these, and the engineers often couldn't tell you whether they're true. The answer usually lives in a provider dashboard, not in the codebase.</p>
+<p>Everblue is an AI journaling app. People write about their lives in it, so I treated the privacy copy as a technical claim that has to be backed by something.</p>
+<h2>Start with what can stay on the device</h2>
+<p>The journal is stored on the phone. Retrieval runs there too: MiniLM embeddings through ONNX, keyword search (BM25) and recency decay in SQLite. The index and the embeddings never leave the device. The companion has also run entirely on Apple's on-device Foundation Models. Anything you can keep local, you never have to make promises about.</p>
+<h2>Then be exact about what leaves</h2>
+<p>Chat messages, entries the user shares with the companion, and photos they add do go to model providers, routed through OpenRouter. Before anything goes out:</p>
+<ul><li>photos pass an on-device sensitive-content check, then get downscaled and EXIF-stripped;</li><li>the backend passes requests along and doesn't keep them, with no prompt or image logging above debug level.</li></ul>
+<p>In the first version, PII was redacted before every prompt, and payloads went only to Gemini's paid tier, which doesn't train on them, with retention opted out per request.</p>
+<h2>Zero data retention is a setting, so model it as one</h2>
+<p>Whether a provider retains prompts depends on account-level routing: prompt logging off, and zero-data-retention endpoints only. My code can't enforce that, so it doesn't pretend to. A single flag asserts that ZDR routing is on, and it stays off until the routing has been verified in the dashboard. A <code>/api/privacy/</code> endpoint reports the current posture, so the app can show copy that matches reality, and if that request fails it falls back to the more cautious wording.</p>
+<h2>Write down what you can never claim</h2>
+<p>The ops doc has a list: no "never used to train AI" and no "not stored by the provider" until the settings back it up, and never that a provider can't review a request flagged for abuse. Having that list in the repo means a future copy change has to get past it.</p>
+<h2>Takeaways</h2>
+<ol><li>Keep whatever you can on the device. It's the only privacy promise you fully control.</li><li>List exactly what leaves the device, and strip metadata before it goes.</li><li>Treat zero data retention as provider configuration, behind a flag you only turn on after checking.</li><li>Let the app's privacy copy read the real posture from the backend, and fail toward the cautious wording.</li><li>Keep a "never claim" list next to the code.</li></ol>
+<p><em>I'm looking for an AI engineering role (remote, US). If your users trust you with personal data, I'd love to talk.</em></p>
+</article>
+<footer>
+  <p>Hand-written HTML and CSS. No framework, no tracker, no dependencies.</p>
+</footer>
+</body>
+</html>
